@@ -8,6 +8,7 @@ namespace V3Lib.Srd.BlockTypes
     {
         public override void DeserializeData(byte[] rawData, string srdiPath, string srdvPath)
         {
+            // CFH is header-only, without actual data
             return;
         }
 

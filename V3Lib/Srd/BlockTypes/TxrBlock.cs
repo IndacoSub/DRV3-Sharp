@@ -21,6 +21,7 @@ namespace V3Lib.Srd.BlockTypes
 
     public sealed class TxrBlock : Block
     {
+        // Relative positions to the start of the header
         public int Unknown10;
         public ushort Swizzle;
         public ushort DisplayWidth;

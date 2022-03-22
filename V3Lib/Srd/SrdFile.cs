@@ -35,6 +35,7 @@ namespace V3Lib.Srd
 
             while (reader.BaseStream.Position < reader.BaseStream.Length)
             {
+                // Read the actual data (not the header)
                 string blockType = Encoding.ASCII.GetString(reader.ReadBytes(4));
                 Block block = blockType switch
                 {
@@ -53,17 +54,18 @@ namespace V3Lib.Srd
                     _ => new UnknownBlock(),
                 };
 
+                // Read block type (Big Endian!)
                 block.BlockType = blockType;
                 int dataLength = reader.ReadInt32BE();
                 int subdataLength = reader.ReadInt32BE();
                 block.Unknown0C = reader.ReadInt32BE();
 
-
+                // Read data length
                 byte[] rawData = reader.ReadBytes(dataLength);
                 block.DeserializeData(rawData, srdiPath, srdvPath);
                 Utils.ReadPadding(reader, 16);
 
-
+                // Read subdata length
                 byte[] rawSubdata = reader.ReadBytes(subdataLength);
                 using (BinaryReader subdataReader = new(new MemoryStream(rawSubdata)))
                 {
@@ -71,6 +73,8 @@ namespace V3Lib.Srd
                     block.Children = childBlocks;
                 }
                 Utils.ReadPadding(reader, 16);
+
+                // Block header successfully red?
 
 
                 blockList.Add(block);

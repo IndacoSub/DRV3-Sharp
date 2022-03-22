@@ -48,6 +48,7 @@ namespace V3Lib.Srd.BlockTypes
 
     public sealed class TreBlock : Block
     {
+        // Relative positions to the start of the header
         public ushort Unknown14;
         public ushort Unknown18;
         public TreeNode RootNode;

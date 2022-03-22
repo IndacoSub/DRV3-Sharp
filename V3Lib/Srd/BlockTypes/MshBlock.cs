@@ -7,6 +7,7 @@ namespace V3Lib.Srd.BlockTypes
 {
     public sealed class MshBlock : Block
     {
+        // Relative positions to the start of the header
         public uint Unknown10;
         public ushort Unknown1A;
         public ushort Unknown1C;

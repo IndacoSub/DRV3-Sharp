@@ -43,6 +43,7 @@ namespace V3Lib.Srd.BlockTypes
 
     public sealed class RsiBlock : Block
     {
+        // Relative positions to the start of the header
         public byte Unknown10;
         public byte Unknown11;
         public byte Unknown12;

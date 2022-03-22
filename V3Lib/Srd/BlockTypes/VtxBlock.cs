@@ -21,6 +21,7 @@ namespace V3Lib.Srd.BlockTypes
     // Holds information about vertex data and index lists
     public sealed class VtxBlock : Block
     {
+        // Relative positions to the start of the header
         public int VectorCount;   // Likely the number of half-float triplets in the "float list"
         public short Unknown14;
         public short MeshType;

@@ -7,6 +7,7 @@ namespace V3Lib.Srd.BlockTypes
 {
     public sealed class SklBlock : Block
     {
+        // Relative positions to the start of the header
         public uint Unknown10;
         public ushort Unknown14;
         public ushort BoneCount;

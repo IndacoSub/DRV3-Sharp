@@ -7,6 +7,7 @@ namespace V3Lib.Srd.BlockTypes
 {
     public sealed class MatBlock : Block
     {
+        // Relative positions to the start of the header
         public uint Unknown10;
         public float Unknown14;
         public float Unknown18;

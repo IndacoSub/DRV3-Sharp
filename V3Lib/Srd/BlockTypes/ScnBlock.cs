@@ -7,6 +7,7 @@ namespace V3Lib.Srd.BlockTypes
 {
     public sealed class ScnBlock : Block
     {
+        // Relative positions to the start of the header
         public uint Unknown10;
         public List<string> SceneRootNodes = new();
         public List<string> UnknownStrings = new();

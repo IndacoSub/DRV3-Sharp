@@ -8,6 +8,7 @@ namespace V3Lib.Srd.BlockTypes
     {
         public override void DeserializeData(byte[] rawData, string srdiPath, string srdvPath)
         {
+            // CT0 is header-only, without actual data
             return;
         }
 

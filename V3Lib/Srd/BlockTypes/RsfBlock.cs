@@ -7,6 +7,7 @@ namespace V3Lib.Srd.BlockTypes
 {
     public sealed class RsfBlock : Block
     {
+        // Relative positions to the start of the header
         public int Unknown10;
         public int Unknown14;
         public int Unknown18;
