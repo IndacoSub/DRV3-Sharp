@@ -7,7 +7,8 @@ namespace V3Lib.Srd.BlockTypes
 {
     public sealed class RsfBlock : Block
     {
-        public int Unknown10;
+        public readonly int ExpectedMagic = 0x24525346;
+        public int Magic;
         public int Unknown14;
         public int Unknown18;
         public int Unknown1C;
@@ -17,7 +18,13 @@ namespace V3Lib.Srd.BlockTypes
         {
             using BinaryReader reader = new(new MemoryStream(rawData));
 
-            Unknown10 = reader.ReadInt32();
+            Magic = reader.ReadInt32BE(); // Now in Big Endian?
+
+            if(Magic != ExpectedMagic)
+            {
+                Console.WriteLine("Unexpected magic for RSF: " + Magic + " VS " + ExpectedMagic);
+            }
+
             Unknown14 = reader.ReadInt32();
             Unknown18 = reader.ReadInt32();
             Unknown1C = reader.ReadInt32();
@@ -29,7 +36,7 @@ namespace V3Lib.Srd.BlockTypes
             using MemoryStream ms = new();
             using BinaryWriter writer = new(ms);
 
-            writer.Write(Unknown10);
+            writer.Write(Magic);
             writer.Write(Unknown14);
             writer.Write(Unknown18);
             writer.Write(Unknown1C);
@@ -44,7 +51,7 @@ namespace V3Lib.Srd.BlockTypes
         {
             StringBuilder sb = new();
 
-            sb.Append($"{nameof(Unknown10)}: {Unknown10}\n");
+            sb.Append($"{nameof(Magic)}: {Magic}\n");
             sb.Append($"{nameof(Unknown14)}: {Unknown14}\n");
             sb.Append($"{nameof(Unknown18)}: {Unknown18}\n");
             sb.Append($"{nameof(Unknown1C)}: {Unknown1C}\n");

@@ -38,18 +38,18 @@ namespace V3Lib.Srd
                 string blockType = Encoding.ASCII.GetString(reader.ReadBytes(4));
                 Block block = blockType switch
                 {
-                    "$CFH" => new CfhBlock(),
-                    "$RSF" => new RsfBlock(),
-                    "$RSI" => new RsiBlock(),
-                    "$TRE" => new TreBlock(),
-                    "$TXI" => new TxiBlock(),
-                    "$TXR" => new TxrBlock(),
-                    "$VTX" => new VtxBlock(),
-                    "$MSH" => new MshBlock(),
-                    "$MAT" => new MatBlock(),
-                    "$SCN" => new ScnBlock(),
-                    "$SKL" => new SklBlock(),
-                    "$CT0" => new Ct0Block(),
+                    "$CFH" => new CfhBlock(), // Container File Header?, length 0x10
+                    "$RSF" => new RsfBlock(), // Resource folder
+                    "$RSI" => new RsiBlock(), // Resource info, RSI blocks follow every other block type except CT0
+                    "$TRE" => new TreBlock(), // Texture something?
+                    "$TXI" => new TxiBlock(), // Texture index?
+                    "$TXR" => new TxrBlock(), // Texture
+                    "$VTX" => new VtxBlock(), // Vertex
+                    "$MSH" => new MshBlock(), // Mesh?
+                    "$MAT" => new MatBlock(), // Material?
+                    "$SCN" => new ScnBlock(), // Scene?
+                    "$SKL" => new SklBlock(), // Skeleton
+                    "$CT0" => new Ct0Block(), // Container ? ?
                     _ => new UnknownBlock(),
                 };
 

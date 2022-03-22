@@ -16,6 +16,8 @@ namespace V3Lib.Srd.BlockTypes
 
         public override void DeserializeData(byte[] rawData, string srdiPath, string srdvPath)
         {
+            Console.WriteLine("Unknown data type!");
+
             if (rawData != null)
                 Data = rawData;
             else
